@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Observar elementos para animação
     const animatedElements = document.querySelectorAll(
-        '.specialization-card, .service-card, .contact-card, .section-header, .about-content, .about-highlights, .credential-item, .highlight-card'
+        '.specialization-card, .service-card, .contact-card, .section-header, .about-content, .about-highlights, .credential-item, .highlight-card, .operation-item'
     );
     
     animatedElements.forEach(el => {
@@ -498,21 +498,3 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 }
-
-// Aplicar debounce aos eventos de scroll
-const debouncedScrollHandler = debounce(() => {
-    // Handlers de scroll já implementados acima
-}, 10);
-
-// Adicionar classe active para links do menu
-const activeStyles = document.createElement('style');
-activeStyles.textContent = `
-    .nav-menu a.active {
-        color: var(--primary);
-    }
-    .nav-menu a.active::after {
-        width: 100%;
-    }
-`;
-document.head.appendChild(activeStyles);
-
