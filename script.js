@@ -516,3 +516,53 @@ activeStyles.textContent = `
 `;
 document.head.appendChild(activeStyles);
 
+
+
+
+// Função para redirecionar para links externos ao clicar em operações
+document.addEventListener('DOMContentLoaded', function() {
+    const operationItems = document.querySelectorAll('.operation-item');
+
+    operationItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const links = this.dataset.links;
+            if (links) {
+                const linkArray = links.split(',').map(link => link.trim());
+                linkArray.forEach(link => {
+                    window.open(link, '_blank');
+                });
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+
+// Função para redirecionar operações
+document.addEventListener('DOMContentLoaded', function() {
+    const operationItems = document.querySelectorAll('.operation-item');
+    operationItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const links = this.getAttribute('data-links');
+            if (links) {
+                const linkArray = links.split(',');
+                if (linkArray.length > 1) {
+                    // Abre múltiplos links em novas abas
+                    linkArray.forEach(link => {
+                        window.open(link.trim(), '_blank');
+                    });
+                } else {
+                    // Abre um único link em uma nova aba
+                    window.open(links, '_blank');
+                }
+            }
+        });
+    });
+});
+
+
