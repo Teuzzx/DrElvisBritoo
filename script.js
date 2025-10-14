@@ -1,7 +1,7 @@
 // Função para abrir WhatsApp
 function openWhatsApp() {
     const phoneNumber = "558994535859";
-    const message = "Olá, gostaria de agendar uma consulta gratuita.";
+    const message = "Olá, gostaria de agendar uma consulta.";
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, "_blank");
 }
@@ -220,7 +220,7 @@ Olá! Recebi uma mensagem através do site:
 *Assunto:* ${data.subject}
 *Mensagem:* ${data.message}
 
-Gostaria de agendar uma consulta gratuita.
+Gostaria de agendar uma consulta.
         `.trim();
 
         // Abrir WhatsApp com a mensagem
