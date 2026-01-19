@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Paletas de Cores - Dr. Elvis Brito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #1a1a1a;
+        }
+
+        .palettes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .palette-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .palette-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .palette-preview {
+            height: 120px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 0;
+        }
+
+        .color-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .palette-info {
+            padding: 25px;
+        }
+
+        .palette-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .palette-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .palette-colors {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .color-item {
+            font-size: 0.8rem;
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            color: #333;
+        }
+
+        .rating {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .star {
+            color: #fdd835;
+            font-size: 1.1rem;
+        }
+
+        .star.empty {
+            color: #ddd;
+        }
+
+        .hero-demo {
+            margin-top: 80px;
+            padding: 40px;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-demo h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-demo .accent {
+            font-weight: 900;
+        }
+
+        .btn-demo {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #1a1a1a;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .recommended {
+            position: relative;
+            border: 3px solid #fdd835;
+        }
+
+        .recommended::before {
+            content: "⭐ RECOMENDADO";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fdd835;
+            color: #1a1a1a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Simulador de Paletas - Dr. Elvis Brito</h1>
+
+        <div class="palettes">
+            <!-- ATUAL -->
+            <div class="palette-card">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #5d1129;">Primary</div>
+                    <div class="color-box" style="background: #8b1538;">Secondary</div>
+                    <div class="color-box" style="background: #fdd835; color: #1a1a1a;">Accent</div>
+                    <div class="color-box" style="background: #1a1a1a;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Atual - Vinho + Dourado</h3>
+                    <p>Elegante, tradicional, convepcional. Transmite autoridade e confiança clássica.</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PALETA 1 -->
+            <div class="palette-card recommended">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #1a3a52;">Primary</div>
+                    <div class="color-box" style="background: #2d5a7b;">Secondary</div>
+                    <div class="color-box" style="background: #d4af37; color: #1a1a1a;">Accent</div>
+                    <div class="color-box" style="background: #0f1419;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Paleta 1 - Azul Navy + Ouro</h3>
+                    <p>Premium e sofisticado. Ideal para escritórios de alto padrão com toque luxury.</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PALETA 2 -->
+            <div class="palette-card">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #0d3d3d;">Primary</div>
+                    <div class="color-box" style="background: #1a5555;">Secondary</div>
+                    <div class="color-box" style="background: #00d4d4;">Accent</div>
+                    <div class="color-box" style="background: #0a0e0f;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Paleta 2 - Verde + Teal</h3>
+                    <p>Fresco e moderno. Transmite equilíbrio, justiça e contemporaneidade.</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PALETA 3 -->
+            <div class="palette-card">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #1a1a1a;">Primary</div>
+                    <div class="color-box" style="background: #2d2d2d;">Secondary</div>
+                    <div class="color-box" style="background: #c41e3a;">Accent</div>
+                    <div class="color-box" style="background: #0d0d0d;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Paleta 3 - Preto + Vermelho</h3>
+                    <p>Intense e poderosa. Máxima autoridade e seriedade para grandes escritórios.</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PALETA 4 -->
+            <div class="palette-card">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #3d1f47;">Primary</div>
+                    <div class="color-box" style="background: #5a2e6b;">Secondary</div>
+                    <div class="color-box" style="background: #b19cd9;">Accent</div>
+                    <div class="color-box" style="background: #1a0d22;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Paleta 4 - Roxo + Violeta</h3>
+                    <p>Intelectual e luxuoso. Para especialistas premium com toque de sofisticação.</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PALETA 5 - MELHOR PARA CRIMINAL -->
+            <div class="palette-card recommended">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #003d82;">Primary</div>
+                    <div class="color-box" style="background: #0052cc;">Secondary</div>
+                    <div class="color-box" style="background: #ff6b35;">Accent</div>
+                    <div class="color-box" style="background: #001a33;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Paleta 5 - Azul + Laranja Coral ⭐</h3>
+                    <p>Dinâmica e competente. MELHOR para advocacia criminal moderna e assertiva!</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PALETA 6 -->
+            <div class="palette-card">
+                <div class="palette-preview">
+                    <div class="color-box" style="background: #2a2a2a;">Primary</div>
+                    <div class="color-box" style="background: #3a3a3a;">Secondary</div>
+                    <div class="color-box" style="background: #b87333;">Accent</div>
+                    <div class="color-box" style="background: #0f0f0f;">Dark</div>
+                </div>
+                <div class="palette-info">
+                    <h3>Paleta 6 - Cinza + Cobre</h3>
+                    <p>Minimalista e elegante. Para boutique jurídica contemporânea e refinada.</p>
+                    <div class="rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEMOS -->
+        <h2 style="text-align: center; margin-top: 100px; margin-bottom: 40px; font-size: 2rem;">Preview nos Elementos</h2>
+
+        <div class="hero-demo" style="--accent: #d4af37; background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);">
+            <h2>Paleta 1: Azul Navy + <span class="accent" style="color: #d4af37;">Ouro</span></h2>
+            <p>Elegância e sofisticação premium</p>
+            <button class="btn-demo btn-primary" style="background: #d4af37; color: #1a1a1a;">Entrar em Contato</button>
+            <button class="btn-demo btn-secondary">Siga no Instagram</button>
+        </div>
+
+        <div class="hero-demo" style="background: linear-gradient(135deg, #0d3d3d 0%, #1a5555 100%);">
+            <h2>Paleta 2: Verde Escuro + <span class="accent" style="color: #00d4d4;">Teal</span></h2>
+            <p>Moderno, justo e equilibrado</p>
+            <button class="btn-demo btn-primary" style="background: #00d4d4; color: #0d3d3d;">Entrar em Contato</button>
+            <button class="btn-demo btn-secondary">Siga no Instagram</button>
+        </div>
+
+        <div class="hero-demo" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);">
+            <h2>Paleta 3: Preto + <span class="accent" style="color: #c41e3a;">Vermelho Crimson</span></h2>
+            <p>Poder, autoridade e impacto máximo</p>
+            <button class="btn-demo btn-primary" style="background: #c41e3a; color: white;">Entrar em Contato</button>
+            <button class="btn-demo btn-secondary">Siga no Instagram</button>
+        </div>
+
+        <div class="hero-demo" style="background: linear-gradient(135deg, #3d1f47 0%, #5a2e6b 100%);">
+            <h2>Paleta 4: Roxo + <span class="accent" style="color: #b19cd9;">Violeta</span></h2>
+            <p>Inteligência, sabedoria e sofisticação</p>
+            <button class="btn-demo btn-primary" style="background: #b19cd9; color: #3d1f47;">Entrar em Contato</button>
+            <button class="btn-demo btn-secondary">Siga no Instagram</button>
+        </div>
+
+        <div class="hero-demo" style="background: linear-gradient(135deg, #003d82 0%, #0052cc 100%);">
+            <h2>Paleta 5 ⭐: Azul + <span class="accent" style="color: #ff6b35;">Coral</span></h2>
+            <p>Dinâmico, competente e contemporâneo</p>
+            <button class="btn-demo btn-primary" style="background: #ff6b35; color: white;">Entrar em Contato</button>
+            <button class="btn-demo btn-secondary">Siga no Instagram</button>
+        </div>
+
+        <div class="hero-demo" style="background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);">
+            <h2>Paleta 6: Cinza + <span class="accent" style="color: #b87333;">Cobre</span></h2>
+            <p>Minimalismo, elegância e refinamento</p>
+            <button class="btn-demo btn-primary" style="background: #b87333; color: white;">Entrar em Contato</button>
+            <button class="btn-demo btn-secondary">Siga no Instagram</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 80px; padding: 40px; background: white; border-radius: 12px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #1a1a1a;">🎯 Qual é sua favorita?</h3>
+            <p style="color: #666; margin-bottom: 30px;">Entre em contato para aplicar a paleta escolhida no site!</p>
+            <a href="https://wa.me/558994535859" target="_blank" style="
+                display: inline-block;
+                padding: 14px 32px;
+                background: #5d1129;
+                color: white;
+                text-decoration: none;
+                border-radius: 6px;
+                font-weight: 600;
+            ">💬 Chama no WhatsApp</a>
+        </div>
+    </div>
+</body>
+</html>

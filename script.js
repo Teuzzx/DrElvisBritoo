@@ -1,3 +1,35 @@
+// Função para toggle do menu mobile
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('mobile-menu-sidebar');
+    const overlay = document.getElementById('mobile-menu-overlay');
+    const hamburger = document.getElementById('hamburger-btn');
+    
+    if (sidebar) {
+        sidebar.classList.toggle('active');
+    }
+    if (overlay) {
+        overlay.classList.toggle('active');
+    }
+    if (hamburger) {
+        hamburger.classList.toggle('active');
+    }
+}
+
+// Fechar menu ao pressionar ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const sidebar = document.getElementById('mobile-menu-sidebar');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const hamburger = document.getElementById('hamburger-btn');
+        
+        if (sidebar && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    }
+});
+
 // Função para abrir WhatsApp
 function openWhatsApp() {
     const phoneNumber = "558994535859";
@@ -220,7 +252,7 @@ Olá! Recebi uma mensagem através do site:
 *Assunto:* ${data.subject}
 *Mensagem:* ${data.message}
 
-Gostaria de agendar uma consulta.
+Gostaria de agendar uma consulta gratuita.
         `.trim();
 
         // Abrir WhatsApp com a mensagem
@@ -564,5 +596,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-

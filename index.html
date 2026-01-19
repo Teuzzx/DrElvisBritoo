@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Elvis Brito - Advogado Criminal | Especialista em Ciências Criminais</title>
-    <meta name="description" content="Dr. Elvis Brito - Advogado Criminal especialista em Tribunal do Júri, Lei de Drogas e Habeas Corpus. Defesa técnica especializada há mais de 4 anos.">
+    <meta name="description" content="Dr. Elvis Brito - Advogado Criminal especialista em Tribunal do Júri, Lei de Drogas e Habeas Corpus. Defesa técnica especializada há mais de 5 anos.">
     <meta name="author" content="Dr. Elvis Brito">
     <meta name="keywords" content="advogado criminal, tribunal do júri, lei de drogas, habeas corpus, defesa criminal, advogado, Piauí">
     
@@ -17,6 +17,7 @@
     <meta name="twitter:image" content="advogado-elvis-brito.jpg">
     
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
@@ -25,54 +26,87 @@
     <header class="header" id="header">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
-                    <img src="logo.png" alt="Dr. Elvis Brito Logo" class="logo-image">
+                <div class="logo hide-on-mobile">
                     <div class="logo-text">
                         <h3>DR. ELVIS BRITO</h3>
                         <span>Advogado Criminal</span>
+                        <div class="logo-bar"></div>
                     </div>
                 </div>
                 <nav class="nav-menu" id="nav-menu">
                     <ul>
-                        <li><a href="#inicio" onclick="smoothScroll('#inicio')">Início</a></li>
-                        <li><a href="#sobre" onclick="smoothScroll('#sobre')">Sobre</a></li>
-                        <li><a href="#especialidades" onclick="smoothScroll('#especialidades')">Especialidades</a></li>
-                        <li><a href="#operacoes" onclick="smoothScroll('#operacoes')">Operações</a></li>
-                        <li><a href="#servicos" onclick="smoothScroll('#servicos')">Serviços</a></li>
-                        <li><a href="#faq" onclick="smoothScroll('#faq')">FAQ</a></li>
-                        <li><a href="#contato" onclick="smoothScroll('#contato')">Contato</a></li>
+                        <li><a href="#inicio" onclick="smoothScroll('#inicio');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-house-door"></i></span><span class="menu-label">Início</span></a></li>
+                        <li><a href="#sobre" onclick="smoothScroll('#sobre');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-person"></i></span><span class="menu-label">Sobre</span></a></li>
+                        <li><a href="#especialidades" onclick="smoothScroll('#especialidades');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-award"></i></span><span class="menu-label">Especialidades</span></a></li>
+                        <li><a href="#operacoes" onclick="smoothScroll('#operacoes');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-briefcase"></i></span><span class="menu-label">Operações</span></a></li>
+                        <li><a href="#servicos" onclick="smoothScroll('#servicos');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-list-check"></i></span><span class="menu-label">Serviços</span></a></li>
+                        <li><a href="#faq" onclick="smoothScroll('#faq');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-question-circle"></i></span><span class="menu-label">FAQ</span></a></li>
+                        <li><a href="#contato" onclick="smoothScroll('#contato');" class="menu-icon-top"><span class="menu-icon"><i class="bi bi-envelope"></i></span><span class="menu-label">Contato</span></a></li>
                     </ul>
                 </nav>
+                <button class="hamburger-btn show-on-mobile" id="hamburger-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
                 <div class="nav-buttons">
-                    <button class="btn-header" onclick="openWhatsApp()">
+                    <button class="btn-header pulse" onclick="openWhatsApp()">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
                         Entrar em Contato
-                    </button>
-                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <nav class="mobile-menu-sidebar" id="mobile-menu-sidebar">
+        <div class="mobile-menu-header">
+            <h3>NAVEGAÇÃO</h3>
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <ul class="mobile-menu-list">
+            <li><a href="#inicio" onclick="smoothScroll('#inicio'); toggleMobileMenu();"><i class="bi bi-house-door"></i> Início</a></li>
+            <li><a href="#sobre" onclick="smoothScroll('#sobre'); toggleMobileMenu();"><i class="bi bi-person"></i> Sobre</a></li>
+            <li><a href="#especialidades" onclick="smoothScroll('#especialidades'); toggleMobileMenu();"><i class="bi bi-award"></i> Especialidades</a></li>
+            <li><a href="#operacoes" onclick="smoothScroll('#operacoes'); toggleMobileMenu();"><i class="bi bi-briefcase"></i> Operações</a></li>
+            <li><a href="#servicos" onclick="smoothScroll('#servicos'); toggleMobileMenu();"><i class="bi bi-list-check"></i> Serviços</a></li>
+            <li><a href="#faq" onclick="smoothScroll('#faq'); toggleMobileMenu();"><i class="bi bi-question-circle"></i> FAQ</a></li>
+            <li><a href="#contato" onclick="smoothScroll('#contato'); toggleMobileMenu();"><i class="bi bi-envelope"></i> Contato</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <div class="mobile-menu-divider"></div>
+            <button class="mobile-menu-cta" onclick="openWhatsApp(); toggleMobileMenu();">
+                <i class="bi bi-whatsapp"></i> Entrar em Contato
+            </button>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
+    <div class="hero-bg-detail"></div>
     <section class="hero-section" id="inicio">
         <div class="container">
             <div class="hero-grid">
                 <!-- Conteúdo de Texto - Esquerda -->
                 <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="bi bi-shield-check"></i> OAB/PI nº 20.005
+                    </div>
                     <div class="hero-text">
                         <h1 class="hero-title">
-                            DR. <span class="accent-text">ELVIS</span><br>
+                            <span class="hero-title-main">DR. <span class="accent-text">ELVIS</span></span><br>
                             <span class="accent-text hero-name">BRITO</span>
                         </h1>
                         <p class="hero-subtitle">Advogado Criminal</p>
-                        <p class="hero-specialty">Especialista em Ciências Criminais, Jurisprudência Penal e Direitos Humanos</p>
+                        <p class="hero-specialty">Especialista em Ciências Criminais</p>
+                        <div class="hero-divider"></div>
                     </div>
                     
                     <p class="hero-description">
@@ -82,21 +116,24 @@
 
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">4+</span>
+                            <i class="bi bi-mortarboard"></i>
+                            <span class="stat-number">5+</span>
                             <span class="stat-label">Anos de Experiência</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">150+</span>
+                            <i class="bi bi-people"></i>
+                            <span class="stat-number">300+</span>
                             <span class="stat-label">Casos Atendidos</span>
                         </div>
                         <div class="stat-item">
+                            <i class="bi bi-clock-history"></i>
                             <span class="stat-number">24h</span>
                             <span class="stat-label">Atendimento Emergencial</span>
                         </div>
                     </div>
 
                     <div class="hero-buttons">
-                        <button class="btn-primary" onclick="openWhatsApp()">
+                        <button class="btn-primary pulse" onclick="openWhatsApp()">
                             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
@@ -115,6 +152,7 @@
 
                 <!-- Imagem do Advogado - Direita -->
                 <div class="hero-image">
+                    <div class="hero-image-glow"></div>
                     <div class="image-container">
                         <img src="./advogado elvis brito.jpg" alt="Dr. Elvis Brito - Advogado Criminal" class="profile-image">
                     </div>
@@ -124,15 +162,22 @@
         </div>
     </section>
 
+    <!-- Divider decorativo -->
+    <div class="section-divider">
+        <i class="bi bi-stars"></i>
+    </div>
     <!-- About Section -->
     <section class="about-section" id="sobre">
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
+                    <div class="about-badge">
+                        <i class="bi bi-award"></i> Excelência em Defesa Criminal
+                    </div>
                     <div class="section-header">
                         <h2 class="section-title">Sobre Dr. Elvis Brito</h2>
                         <p class="section-subtitle">
-                            Mais de 4 anos dedicados à defesa criminal com excelência e compromisso
+                            Mais de 5 anos dedicados à defesa criminal com excelência e compromisso
                         </p>
                     </div>
 
@@ -160,7 +205,7 @@
                             </div>
                             <div>
                                 <h4>Formação Acadêmica</h4>
-                                <p>Ciências Criminais, Jurisprudência Penal & Direitos Humanos</p>
+                                <p>Bacharel em Direito com Especialização em Ciências Criminais e Jurisprudência Penal</p>
                             </div>
                         </div>
 
@@ -184,7 +229,7 @@
                             </div>
                             <div>
                                 <h4>Experiência</h4>
-                                <p>Mais de 4 anos atuando em Direito Penal e Processual Penal</p>
+                                <p>Mais de 5 anos atuando em Direito Penal e Processual Penal</p>
                             </div>
                         </div>
                     </div>
@@ -362,6 +407,56 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="specialization-card">
+                    <div class="card-header">
+                        <div class="icon-container">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+                                <path d="M8 12l2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Operações Policiais</h3>
+                        <p class="card-description">
+                            Defesa especializada em crimes de maior complexidade investigativa com atuação em operações federais e estaduais.
+                        </p>
+                    </div>
+                    
+                    <div class="topics-list">
+                        <div class="topic-item">
+                            <div class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Lavagem de Dinheiro</span>
+                        </div>
+                        <div class="topic-item">
+                            <div class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Organização Criminosa</span>
+                        </div>
+                        <div class="topic-item">
+                            <div class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Crimes Econômicos</span>
+                        </div>
+                        <div class="topic-item">
+                            <div class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Crimes Federais</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -376,69 +471,77 @@
                 
                 <div class="operations-grid">
                     <div class="operations-column">
-                        <div class="operation-item" id="op-delivery" data-links="https://cidadeverde.com/noticias/392959/operacao-delivery-cumpre-mandados-e-apreende-cocaina-em-alagoinha-pi, https://youtu.be/bSt_bnq90DM?si=GOor7qocXKndPWiV">
+                        <div class="operation-item" id="op-delivery" data-links="https://www.google.com/search?q=Operacao+Delivery">
                             <div class="operation-bullet"></div>
                             <span>Delivery</span>
                         </div>
-                        <div class="operation-item" id="op-exodo-seguro" data-links="https://www.viagora.com.br/policia/noticia/2024/4/9/operacao-exodo-seguro-desarticula-organizacoes-criminosas-em-picos-113873.html, https://youtu.be/PMq4xrMgF0c?si=-AtoyC77Q5YDa9j-">
+                        <div class="operation-item" id="op-exodo-seguro" data-links="https://www.google.com/search?q=Operacao+Exodo+Seguro">
                             <div class="operation-bullet"></div>
                             <span>Êxodo Seguro</span>
                         </div>
-                        <div class="operation-item" id="op-sheik" data-links="https://g1.globo.com/pi/piaui/noticia/2025/07/17/suspeitos-de-trafico-de-drogas-e-lavagem-de-dinheiro-sao-presos-durante-operacao-no-pi.ghtml, https://youtu.be/yJ6o3RZxDuo?si=ylondYfDJaUZTtEE">
+                        <div class="operation-item" id="op-sheik" data-links="https://www.google.com/search?q=Operacao+Sheik">
                             <div class="operation-bullet"></div>
                             <span>Sheik</span>
                         </div>
-                        <div class="operation-item" id="op-disciplina" data-links="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.instagram.com/reel/DLXkDWlsLRW/&ved=2ahUKEwis1K_9hPKPAxXOBrkGHYOxA2oQFnoECB8QAQ&usg=AOvVaw3PLSnhLSqYskXKmfIqTZ7_">
+                        <div class="operation-item" id="op-disciplina" data-links="https://www.google.com/search?q=Operacao+Disciplina">
                             <div class="operation-bullet"></div>
                             <span>Disciplina</span>
                         </div>
-                        <div class="operation-item" id="op-fraus" data-links="https://sertaoatual.com/portal/destaques-site/dono-de-estabelecimento-e-assassinado-a-tiros-em-marcolandia-pi-segundo-homicidio-em-menos-de-4h/, https://youtu.be/WJ7meqGSqyc?si=3R3uakVwLvZ8X0s5">
+                        <div class="operation-item" id="op-fraus" data-links="https://www.google.com/search?q=Operacao+Fraus+PE">
                             <div class="operation-bullet"></div>
-                            <span>Fraus (Pernambuco)</span>
+                            <span>Fraus (PE)</span>
+                        </div>
+                        <div class="operation-item" id="op-boca-fechada" data-links="https://www.riachaonet.com.br/portal/operacao-boca-fechada-prende-oito-pessoas-e-apreende-drogas-armas-e-dinheiro-em-cidades-da-regiao-de-picos/">
+                            <div class="operation-bullet"></div>
+                            <span>Boca Fechada</span>
                         </div>
                     </div>
                     
                     <div class="operations-column">
-                        <div class="operation-item" id="op-nark-ii" data-links="https://www.gov.br/mj/pt-br/assuntos/noticias/operacao-narke-2-e-encerrada-com-prisao-de-1-293-pessoas-e-apreensao-de-18-7-toneladas-de-drogas">
+                        <div class="operation-item" id="op-nark-ii" data-links="https://www.google.com/search?q=Operacao+Nark+II">
                             <div class="operation-bullet"></div>
-                            <span>Narke 2  (Nacional)</span>
+                            <span>Nark II</span>
                         </div>
-                        <div class="operation-item" id="op-nordeste-integrado" data-links="https://www.pi.gov.br/piaui-e-mais-sete-estados-deflagram-a-operacao-nordeste-integrado-contra-o-crime-nas-divisas/">
+                        <div class="operation-item" id="op-nordeste-integrado" data-links="https://www.google.com/search?q=Operacao+Nordeste+Integrado">
                             <div class="operation-bullet"></div>
-                            <span>Nordeste Integrado Regionalizada</span>
+                            <span>Nordeste Integrado</span>
                         </div>
-                        <div class="operation-item" id="op-crepusculo" data-links="https://cidadeverde.com/noticias/438583/operacao-crepusculo-desarticula-nucleo-do-trafico-em-picos">
+                        <div class="operation-item" id="op-crepusculo" data-links="https://www.google.com/search?q=Operacao+Crepusculo">
                             <div class="operation-bullet"></div>
                             <span>Crepúsculo</span>
                         </div>
-                        <div class="operation-item" id="op-protetor" data-links="https://www.pm.go.gov.br/operacao-protetor-cod-intercepta-traficante-vom-1-500kg-de-maconha-em-goias/">
+                        <div class="operation-item" id="op-protetor" data-links="https://www.google.com/search?q=Operacao+Protetor+GO">
                             <div class="operation-bullet"></div>
-                            <span>Protetor (Goiás)</span>
+                            <span>Protetor (GO)</span>
                         </div>
-                        <div class="operation-item" id="op-avast" data-links="https://picos40graus.com.br/shmtw.php?sh=shmt&ma_id=24218, https://youtu.be/Nvr_m3-bupY?si=TiSa50TWII5ijJep">
+                        <div class="operation-item" id="op-avast" data-links="https://www.google.com/search?q=Operacao+Avast">
                             <div class="operation-bullet"></div>
-                            <span>Cerco Fechado</span>
+                            <span>Avast</span>
+                        </div>
+                        <div class="operation-item" id="op-crepusculo-ii" data-links="https://www.gp1.com.br/policia/noticia/2025/12/17/draco-deflagra-operacao-crepusculo-ii-e-cumpre-35-mandados-contra-o-pcc-no-piaui-e-em-sao-paulo-610747.html">
+                            <div class="operation-bullet"></div>
+                            <span>Crespúsculo II</span>
                         </div>
                     </div>
                     
                     <div class="operations-column">
-                        <div class="operation-item" id="op-corpo-fechado" data-links="https://cidadeverde.com/noticias/414607/operacao-e-deflagrada-no-combate-a-organizacao-criminosa-que-atua-em-crimes-de-latrocinio-e-furtos-na-regiao-de-picos, https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DrnMCqj0fFLQ&ved=2ahUKEwjfj-H8q_SPAxX-qpUCHXOhG-QQFnoECCIQAQ&usg=AOvVaw0ZxZeC0UFHEtNg-sokdx4X">
+                        <div class="operation-item" id="op-corpo-fechado" data-links="https://www.google.com/search?q=Operacao+Corpo+Fechado">
                             <div class="operation-bullet"></div>
                             <span>Corpo Fechado</span>
                         </div>
-                        <div class="operation-item" id="op-cerco-fechado" data-links="https://g1.globo.com/pi/piaui/noticia/2015/11/operacao-prendeu-36-pessoas-por-trafico-de-drogas-no-sul-do-piaui.html?utm_source=share-universal&utm_medium=share-bar-app&utm_campaign=materias">
+                        <div class="operation-item" id="op-cerco-fechado" data-links="https://www.google.com/search?q=Operacao+Cerco+Fechado">
                             <div class="operation-bullet"></div>
-                            <span>Avast</span>
+                            <span>Cerco Fechado</span>
                         </div>
-                        <div class="operation-item" id="op-cerne-iv" data-links="https://www.instagram.com/reel/C6Z7EEtsl2i/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+                        <div class="operation-item" id="op-cerne-iv" data-links="https://www.google.com/search?q=Operacao+Cerne+IV">
                             <div class="operation-bullet"></div>
                             <span>Cerne IV (anulada no STJ)</span>
                         </div>
-                        <div class="operation-item" id="op-cerne-v" data-links="https://www.gp1.com.br/pi/piaui/noticia/2023/7/26/policia-deflagra-operacao-e-prende-acusado-de-trafico-em-picos-552502.html">
+                        <div class="operation-item" id="op-cerne-v" data-links="https://www.google.com/search?q=Operacao+Cerne+V">
                             <div class="operation-bullet"></div>
                             <span>Cerne V</span>
                         </div>
-                        <div class="operation-item" id="op-punare" data-links="https://www.riachaonet.com.br/portal/operacao-punare-cumpre-19-mandados-de-busca-e-apreensao-em-picos/">
+                        <div class="operation-item" id="op-punare" data-links="https://www.google.com/search?q=Operacao+Punare">
                             <div class="operation-bullet"></div>
                             <span>Punaré</span>
                         </div>
@@ -575,6 +678,158 @@
                     </div>
                     <div class="faq-answer">
                         <p>Absolutamente. Mantemos nossos clientes sempre informados sobre o andamento de seus processos através de relatórios periódicos, WhatsApp e reuniões presenciais quando necessário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos de Clientes -->
+    <section class="testimonials-section" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <div class="testimonials-badge">
+                    <i class="bi bi-chat-left-quote"></i> Satisfação dos Clientes
+                </div>
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <p class="section-subtitle">Histórias reais de pessoas que confiaram em nossa defesa técnica</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #5D1129 0%, #8B1A47 100%);">
+                            <span>JS</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">João S.</h4>
+                            <p class="testimonial-role">Caso Criminal</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">"Profissionalismo e dedicação em cada etapa do processo. O Dr. Elvis foi extremamente atencioso e conseguiu um resultado fantástico para meu caso. Recomendo fortemente!"</p>
+                    <div class="testimonial-footer">
+                        <i class="bi bi-check-circle-fill"></i> Caso Resolvido
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #E67E22 0%, #D35400 100%);">
+                            <span>MF</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Maria F.</h4>
+                            <p class="testimonial-role">Habeas Corpus</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">"Me senti seguro e acolhido desde o primeiro atendimento. A defesa foi impecável e conseguiu reverter uma situação muito complicada. Muito grata!"</p>
+                    <div class="testimonial-footer">
+                        <i class="bi bi-check-circle-fill"></i> HC Concedido
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #3498DB 0%, #2980B9 100%);">
+                            <span>CM</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Carlos M.</h4>
+                            <p class="testimonial-role">Lei de Drogas</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente advogado, resolveu meu caso com agilidade e competência técnica. Conseguiu desclassificar minha situação através de uma defesa brilhante!"</p>
+                    <div class="testimonial-footer">
+                        <i class="bi bi-check-circle-fill"></i> Desclassificado
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #27AE60 0%, #229954 100%);">
+                            <span>AP</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Ana P.</h4>
+                            <p class="testimonial-role">Tribunal do Júri</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">"Dr. Elvis foi a salvação da minha família. Sua preparação para o júri foi impecável e conseguiu comprovar minha inocência. Eternamente grata!"</p>
+                    <div class="testimonial-footer">
+                        <i class="bi bi-check-circle-fill"></i> Absolvição
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #9B59B6 0%, #7D3C98 100%);">
+                            <span>RG</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Roberto G.</h4>
+                            <p class="testimonial-role">Apelação Criminal</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">"Profissional de excelência! Conseguiu reformar minha condenação em primeira instância. Realmente acreditei na justiça novamente graças a ele."</p>
+                    <div class="testimonial-footer">
+                        <i class="bi bi-check-circle-fill"></i> Condenação Reformada
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);">
+                            <span>LM</span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Lúcia M.</h4>
+                            <p class="testimonial-role">Consultoria Jurídica</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">"Atendimento humanizado e defesa técnica de altíssimo nível. Dr. Elvis realmente se importa com seus clientes. Recomendo para todos que precisem de um advogado criminalista sério."</p>
+                    <div class="testimonial-footer">
+                        <i class="bi bi-check-circle-fill"></i> Seguro e Protegido
                     </div>
                 </div>
             </div>
@@ -741,6 +996,7 @@
     </section>
 
     <!-- Footer -->
+    <div class="footer-divider"></div>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -749,7 +1005,7 @@
                     <p class="footer-subtitle">Advogado Criminal | OAB/PI</p>
                     <p class="footer-specialty">Especialista em Ciências Criminais</p>
                     <p class="footer-description">
-                        Mais de 4 anos dedicados à defesa criminal com excelência, 
+                        Mais de 5 anos dedicados à defesa criminal com excelência, 
                         ética e compromisso com a justiça.
                     </p>
                 </div>
@@ -813,12 +1069,12 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" onclick="scrollToTop()">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/558994535859" class="back-to-top whatsapp-button" target="_blank" title="Fale pelo WhatsApp">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="m18 15-6-6-6 6"></path>
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
         </svg>
-    </button>
+    </a>
 
     <script src="script.js"></script>
 </body>
